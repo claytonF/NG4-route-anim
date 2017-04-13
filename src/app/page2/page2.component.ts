@@ -24,12 +24,8 @@ export class Page2Component implements OnInit {
     });
   }
 
-  back(nextRoute:string) {
-    return this._animationService.back(nextRoute);
-  }
-
-  forward(nextRoute:string) {
-    return this._animationService.forward(nextRoute);
+  routeFn(direction:string,nextRoute:string) {
+    return this._animationService.routingService(direction,nextRoute);
   }
 
 }

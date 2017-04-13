@@ -15,16 +15,8 @@ export class AnimationService {
       return this.routing;
   }
 
-  back(nextRoute) {
-      this.routing = "back";
-      this.emitCurrentDirection.emit(this.routing);
-      setTimeout(()=>{ // timeoiut pushes this code to the back of the event queue
-          this._router.navigateByUrl(nextRoute)
-      });
-  }
-
-  forward(nextRoute) {
-      this.routing = "forward";
+  routingService(direction, nextRoute) {
+      this.routing = direction;
       this.emitCurrentDirection.emit(this.routing);
       setTimeout(()=>{ // timeoiut pushes this code to the back of the event queue
           this._router.navigateByUrl(nextRoute)
