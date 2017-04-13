@@ -6,6 +6,8 @@ To do:
 - hook in browser history so that transition direction is updated
 - expand animation options
 
+Big thanks to https://github.com/dannypule for getting it over the line!
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 ## Development server
