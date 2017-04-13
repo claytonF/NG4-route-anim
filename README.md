@@ -2,7 +2,7 @@
 
 Navigation animation between routes.
 To do:
-- get rid 
+- get rid of hard coded routes. Maybe use redux?
 - hook in browser history so that transition direction is updated
 - expand animation options
 
