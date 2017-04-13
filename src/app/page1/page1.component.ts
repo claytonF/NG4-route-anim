@@ -19,8 +19,6 @@ export class Page1Component implements OnInit {
 
   ngOnInit() {
     this.routing = this._animationService.animationDirection();
-    console.log(this.routing);
-
     this._animationServiceEventsSubscription = this._animationService.emitCurrentDirection.subscribe((direction: any) => {
       this.routing = direction;
     });
@@ -31,7 +29,6 @@ export class Page1Component implements OnInit {
   }
 
   forward(nextRoute:string) {
-    console.log(nextRoute)
     return this._animationService.forward(nextRoute);
   }
 

@@ -26,7 +26,6 @@ export class AnimationService {
   forward(nextRoute) {
       this.routing = "forward";
       this.emitCurrentDirection.emit(this.routing);
-      console.log(nextRoute)
       setTimeout(()=>{ // timeoiut pushes this code to the back of the event queue
           this._router.navigateByUrl(nextRoute)
       });
