@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, HostListener } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { routeAnimation } from '../app.animations';
 import { AnimationService } from '../app.animation.service';
@@ -10,23 +10,28 @@ import { AnimationService } from '../app.animation.service';
   animations:[routeAnimation]
 })
 export class Page2Component implements OnInit {
-  //routing:string;
-  @HostBinding('@routing') routing
+  @HostBinding("@routing") routing 
   @HostBinding('style.display') display = "block";
-  title = "Page 2";
+  title = "page 2";
+  _animationServiceEventsSubscription: any;
   
   constructor(private _animationService: AnimationService) {}
 
   ngOnInit() {
     this.routing = this._animationService.animationDirection();
+    console.log(this.routing);
+
+    this._animationServiceEventsSubscription = this._animationService.emitCurrentDirection.subscribe((direction: any) => {
+      this.routing = direction;
+    });
   }
 
-  back() {
-    return this._animationService.back();
+  back(nextRoute:string) {
+    return this._animationService.back(nextRoute);
   }
 
-  forward() {
-    return this._animationService.forward();
+  forward(nextRoute:string) {
+    return this._animationService.forward(nextRoute);
   }
 
 }

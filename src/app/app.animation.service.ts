@@ -1,4 +1,4 @@
-import { HostBinding } from '@angular/core';
+import { HostBinding, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Injectable } from '@angular/core';
 
@@ -6,24 +6,29 @@ import { Injectable } from '@angular/core';
 
 export class AnimationService {
 
-  //@HostBinding('@routing') routing = "none";
+  emitCurrentDirection: EventEmitter<Object> = new EventEmitter<Object>();
+  routing:string;
 
-  routing:string = "forward";
   constructor(private _router:Router) {}
 
   animationDirection() {
-    
       return this.routing;
   }
 
-  back() {
+  back(nextRoute) {
       this.routing = "back";
-      this._router.navigateByUrl('/')
+      this.emitCurrentDirection.emit(this.routing);
+      setTimeout(()=>{ // timeoiut pushes this code to the back of the event queue
+          this._router.navigateByUrl(nextRoute)
+      });
   }
 
-  forward() {
+  forward(nextRoute) {
       this.routing = "forward";
-      console.log(this.routing)
-      this._router.navigateByUrl('/page2')
+      this.emitCurrentDirection.emit(this.routing);
+      console.log(nextRoute)
+      setTimeout(()=>{ // timeoiut pushes this code to the back of the event queue
+          this._router.navigateByUrl(nextRoute)
+      });
   }
 }
