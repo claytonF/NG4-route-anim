@@ -1,5 +1,7 @@
 # AnimationsV4
 
+Currently battling to get this working as I want. Have an open Q on SO (http://stackoverflow.com/questions/43384107/update-hostbinding-angular-4-animation). Any help much appreciated.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 ## Development server
