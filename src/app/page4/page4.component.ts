@@ -19,8 +19,6 @@ export class Page4Component implements OnInit {
 
   ngOnInit() {
     this.routing = this._animationService.animationDirection();
-    console.log(this.routing);
-
     this._animationServiceEventsSubscription = this._animationService.emitCurrentDirection.subscribe((direction: any) => {
       this.routing = direction;
     });
